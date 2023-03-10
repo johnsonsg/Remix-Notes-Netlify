@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/routes/demo.jsx"],
+  "sourcesContent": ["export default function Demo() {\n  return <h1>Demo Page</h1>\n}\n"],
+  "mappings": ";;;;;;AACS;AADM,SAAR,OAAwB;AAC7B,SAAO,mDAAC,QAAG,yBAAJ;AAAA;AAAA;AAAA;AAAA,SAAa;AACtB;",
+  "names": []
+}

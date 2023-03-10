@@ -196,43 +196,31 @@ var index_exports = {};
 __export(index_exports, {
   default: () => Index
 });
-var import_react3 = require("react"), import_jsx_dev_runtime3 = require("react/jsx-dev-runtime");
+var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime");
 function Index() {
-  let [count, setCount] = (0, import_react3.useState)(0), onClick = () => {
-    setCount(count + 1);
-  };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { children: "Index" }, void 0, !1, {
-      fileName: "app/routes/_index.jsx",
-      lineNumber: 20,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { children: [
-      "Count: ",
-      count
-    ] }, void 0, !0, {
-      fileName: "app/routes/_index.jsx",
-      lineNumber: 21,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(() => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("button", { onClick, children: "Click me" }, void 0, !1, {
-      fileName: "app/routes/_index.jsx",
-      lineNumber: 14,
-      columnNumber: 24
-    }, this), {}, void 0, !1, {
-      fileName: "app/routes/_index.jsx",
-      lineNumber: 22,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { children: "Hello World!" }, void 0, !1, {
     fileName: "app/routes/_index.jsx",
-    lineNumber: 19,
-    columnNumber: 5
+    lineNumber: 2,
+    columnNumber: 10
+  }, this);
+}
+
+// app/routes/demo.jsx
+var demo_exports = {};
+__export(demo_exports, {
+  default: () => Demo
+});
+var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime");
+function Demo() {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { children: "Demo Page" }, void 0, !1, {
+    fileName: "app/routes/demo.jsx",
+    lineNumber: 2,
+    columnNumber: 10
   }, this);
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "fda8e1d3", entry: { module: "/build/entry.client-A7IABOCZ.js", imports: ["/build/_shared/chunk-U6UVPIG3.js", "/build/_shared/chunk-EETRBLDB.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-P67SS7UL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-JBDX4W5R.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-FDA8E1D3.js" };
+var assets_manifest_default = { version: "f7e266ae", entry: { module: "/build/entry.client-A7IABOCZ.js", imports: ["/build/_shared/chunk-U6UVPIG3.js", "/build/_shared/chunk-EETRBLDB.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-P67SS7UL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-NW5YTD2H.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/demo": { id: "routes/demo", parentId: "root", path: "demo", index: void 0, caseSensitive: void 0, module: "/build/routes/demo-QXGYWVX5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-F7E266AE.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_node_exports }, routes = {
@@ -251,6 +239,14 @@ var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, u
     index: !0,
     caseSensitive: void 0,
     module: index_exports
+  },
+  "routes/demo": {
+    id: "routes/demo",
+    parentId: "root",
+    path: "demo",
+    index: void 0,
+    caseSensitive: void 0,
+    module: demo_exports
   }
 };
 // Annotate the CommonJS export names for ESM import in node:

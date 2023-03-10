@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../app/routes/_index.jsx"],
-  "sourcesContent": ["// import usestate from react\nimport { useState } from 'react'\n\nexport default function Index() {\n  // add useState for button in react\n  const [count, setCount] = useState(0)\n\n  // create onClick function for button\n  const onClick = () => {\n    setCount(count + 1)\n  }\n\n  // create button component with onClick function and store to state\n  const Button = () => <button onClick={onClick}>Click me</button>\n\n  return (\n    // add button component to return\n\n    <div>\n      <h1>Index</h1>\n      <p>Count: {count}</p>\n      <Button />\n    </div>\n  )\n}\n"],
-  "mappings": ";;;;;;;AACA,mBAAyB;AAYF;AAVR,SAAR,QAAyB;AAE9B,QAAM,CAAC,OAAO,QAAQ,QAAI,uBAAS,CAAC;AAGpC,QAAM,UAAU,MAAM;AACpB,aAAS,QAAQ,CAAC;AAAA,EACpB;AAGA,QAAM,SAAS,MAAM,mDAAC,YAAO,SAAkB,wBAA1B;AAAA;AAAA;AAAA;AAAA,SAAkC;AAEvD,SAGE,mDAAC,SACC;AAAA,uDAAC,QAAG,qBAAJ;AAAA;AAAA;AAAA;AAAA,WAAS;AAAA,IACT,mDAAC,OAAE;AAAA;AAAA,MAAQ;AAAA,SAAX;AAAA;AAAA;AAAA;AAAA,WAAiB;AAAA,IACjB,mDAAC,YAAD;AAAA;AAAA;AAAA;AAAA,WAAQ;AAAA,OAHV;AAAA;AAAA;AAAA;AAAA,SAIA;AAEJ;",
-  "names": []
-}
