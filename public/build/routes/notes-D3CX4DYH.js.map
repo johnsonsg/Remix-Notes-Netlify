@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/routes/notes.jsx"],
+  "sourcesContent": ["export default function NotesPage() {\n  return (\n    <main>\n      <h1>My Notes</h1>\n    </main>\n  )\n}\n"],
+  "mappings": ";;;;;;AAGM;AAHS,SAAR,YAA6B;AAClC,SACE,mDAAC,UACC,6DAAC,QAAG,wBAAJ;AAAA;AAAA;AAAA;AAAA,SAAY,KADd;AAAA;AAAA;AAAA;AAAA,SAEA;AAEJ;",
+  "names": []
+}

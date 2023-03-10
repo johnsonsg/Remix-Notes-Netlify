@@ -1,6 +1,6 @@
 import {
   RemixBrowser
-} from "/build/_shared/chunk-U6UVPIG3.js";
+} from "/build/_shared/chunk-6KRCK6E3.js";
 import {
   __commonJS,
   __toESM,
@@ -21105,4 +21105,4 @@ if (typeof requestIdleCallback === "function") {
 } else {
   setTimeout(hydrate, 1);
 }
-//# sourceMappingURL=/build/entry.client-A7IABOCZ.js.map
+//# sourceMappingURL=/build/entry.client-TE4VU75C.js.map

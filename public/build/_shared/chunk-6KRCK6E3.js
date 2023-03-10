@@ -5303,6 +5303,7 @@ function ScrollRestoration2({
 
 export {
   Outlet,
+  Link2 as Link,
   Links,
   Meta,
   Scripts,
@@ -5310,4 +5311,4 @@ export {
   RemixBrowser,
   ScrollRestoration2 as ScrollRestoration
 };
-//# sourceMappingURL=/build/_shared/chunk-U6UVPIG3.js.map
+//# sourceMappingURL=/build/_shared/chunk-6KRCK6E3.js.map

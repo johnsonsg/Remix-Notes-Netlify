@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../app/routes/_index.jsx"],
-  "sourcesContent": ["export default function Index() {\n  return <h1>Hello World!</h1>\n}\n"],
-  "mappings": ";;;;;;AACS;AADM,SAAR,QAAyB;AAC9B,SAAO,mDAAC,QAAG,4BAAJ;AAAA;AAAA;AAAA;AAAA,SAAgB;AACzB;",
-  "names": []
-}
