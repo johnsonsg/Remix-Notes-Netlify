@@ -141,6 +141,12 @@ export async function action({ request }) {
 }
 ```
 
+### Test Form and check MongoDB for submission
+
+- If you have an error, make sure your schema model is correct
+- Make sure your DATABASE_URL is correct with the right credentials
+- Make sure your form is calling the correct info from your schema.
+
 ### Done!
 
 - Now you should be able to tallk to the Database and add new data.
