@@ -1,3 +1,5 @@
+// Mock Server Side Data
+
 import fs from 'fs/promises'
 
 export async function getStoredNotes() {
@@ -10,5 +12,3 @@ export async function getStoredNotes() {
 export function storeNotes(notes) {
   return fs.writeFile('notes.json', JSON.stringify({ notes: notes || [] }))
 }
-
-// TODO: Hook up MongoDB with Prisma
