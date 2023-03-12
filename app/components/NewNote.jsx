@@ -1,6 +1,8 @@
+import { useActionData } from '@remix-run/react'
 import noteStyles from '~/styles/NewNote.css'
 
 function NewNote() {
+  const validationErrors = useActionData()
   return (
     <form method='post' id='note-form'>
       <p>
@@ -11,6 +13,16 @@ function NewNote() {
         <label htmlFor='content'>Content</label>
         <textarea id='content' name='content' rows='5' required />
       </p>
+
+      {/* show server-side validation errors */}
+      {validationErrors && (
+        <ul>
+          {Object.values(validationErrors).map(error => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      )}
+
       <div className='form-actions'>
         <button>Add Note</button>
       </div>

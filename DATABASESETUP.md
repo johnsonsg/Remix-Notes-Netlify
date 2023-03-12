@@ -147,6 +147,30 @@ export async function action({ request }) {
 - Make sure your DATABASE_URL is correct with the right credentials
 - Make sure your form is calling the correct info from your schema.
 
+## Validation: Add Server Validation
+
+- Create file in /data: validation.server.js
+- Add validation on the form
+- Import { useActionData}
+- call useActionData() in a const inside function
+- return the validation
+
+```
+ import { useActionData } from '@remix-run/react'
+
+ const validationErrors = useActionData()
+
+ {/* show server-side validation errors */}
+  {validationErrors && (
+    <ul>
+      {Object.values(validationErrors).map(error => (
+        <li key={error}>{error}</li>
+      ))}
+    </ul>
+  )}
+
+```
+
 ### Done!
 
 - Now you should be able to tallk to the Database and add new data.
