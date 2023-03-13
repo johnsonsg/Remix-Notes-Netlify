@@ -1,20 +1,70 @@
+import { Form, useActionData, useNavigation, useSubmit } from '@remix-run/react'
+import { useEffect, useRef } from 'react'
 import noteStyles from '~/styles/NewNote.css'
 
 function NewNote() {
+  const validationErrors = useActionData()
+
+  const navigation = useNavigation()
+
+  const isSubmitting = navigation.state !== 'idle'
+
+  let formRef = useRef()
+  // let titleRef = useRef()
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      formRef.current?.reset()
+      // titleRef.current?.focus() // if you want to focus on the title field after submit.
+    }
+  }, [isSubmitting])
+
+  const submit = useSubmit()
+
+  function submitHandler(event) {
+    event.preventDefault()
+    submit(event.target, {
+      method: 'POST'
+    })
+  }
+
   return (
-    <form method='post' id='note-form'>
+    <Form
+      ref={formRef}
+      // method='post' Submitting Programmatically
+      id='note-form'
+      onSubmit={submitHandler}
+    >
       <p>
         <label htmlFor='title'>Title</label>
-        <input type='text' id='title' name='title' required />
+        <input
+          // ref={titleRef}
+          type='text'
+          id='title'
+          name='title'
+          required
+        />
       </p>
       <p>
         <label htmlFor='content'>Content</label>
         <textarea id='content' name='content' rows='5' required />
       </p>
+
+      {/* show server-side validation errors */}
+      {validationErrors && (
+        <ul>
+          {Object.values(validationErrors).map(error => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      )}
+
       <div className='form-actions'>
-        <button>Add Note</button>
+        <button disabled={isSubmitting}>
+          {isSubmitting ? 'Saving...' : 'Save Note'}
+        </button>
       </div>
-    </form>
+    </Form>
   )
 }
 
