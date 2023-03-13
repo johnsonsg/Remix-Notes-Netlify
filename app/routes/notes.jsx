@@ -33,6 +33,7 @@ export async function action({ request }) {
   }
 
   await addNote(noteData)
+  await new Promise(resolve => setTimeout(resolve, 500))
   return redirect('/notes')
 }
 
