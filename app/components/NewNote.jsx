@@ -3,10 +3,9 @@ import { useEffect, useRef } from 'react'
 import noteStyles from '~/styles/NewNote.css'
 
 function NewNote() {
+  // const data = useActionData() // Use validationErrors instead of data
   const validationErrors = useActionData()
-
   const navigation = useNavigation()
-
   const isSubmitting = navigation.state !== 'idle'
 
   let formRef = useRef()
@@ -28,6 +27,7 @@ function NewNote() {
     })
   }
 
+  // Look at using state instead of useRef. Store inputs in state incase there is an error and inputs get errased on validation error during submit.
   return (
     <Form
       ref={formRef}
@@ -51,6 +51,15 @@ function NewNote() {
       </p>
 
       {/* show server-side validation errors */}
+
+      {/* {data?.message && (
+        <ul>
+          <li>{data.message}</li>
+        </ul>
+      )}
+      // Use validationErrors instead of data
+      */}
+
       {validationErrors && (
         <ul>
           {Object.values(validationErrors).map(error => (
@@ -58,7 +67,6 @@ function NewNote() {
           ))}
         </ul>
       )}
-
       <div className='form-actions'>
         <button disabled={isSubmitting}>
           {isSubmitting ? 'Adding...' : 'Add Note'}
