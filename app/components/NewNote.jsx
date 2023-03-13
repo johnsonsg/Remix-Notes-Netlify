@@ -1,16 +1,23 @@
 import { Form, useActionData, useNavigation, useSubmit } from '@remix-run/react'
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import noteStyles from '~/styles/NewNote.css'
 
 function NewNote() {
-  const [noteTitle, setNoteTitle] = useState('')
-  const [noteContent, setNoteContent] = useState('')
-
   const validationErrors = useActionData()
 
   const navigation = useNavigation()
 
   const isSubmitting = navigation.state !== 'idle'
+
+  let formRef = useRef()
+  // let titleRef = useRef()
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      formRef.current?.reset()
+      // titleRef.current?.focus() // if you want to focus on the title field after submit.
+    }
+  }, [isSubmitting])
 
   const submit = useSubmit()
 
@@ -19,13 +26,11 @@ function NewNote() {
     submit(event.target, {
       method: 'POST'
     })
-
-    setNoteTitle('')
-    setNoteContent('')
   }
 
   return (
     <Form
+      ref={formRef}
       // method='post' Submitting Programmatically
       id='note-form'
       onSubmit={submitHandler}
@@ -33,8 +38,7 @@ function NewNote() {
       <p>
         <label htmlFor='title'>Title</label>
         <input
-          value={noteTitle}
-          onChange={e => setNoteTitle(e.target.value)}
+          // ref={titleRef}
           type='text'
           id='title'
           name='title'
@@ -43,14 +47,7 @@ function NewNote() {
       </p>
       <p>
         <label htmlFor='content'>Content</label>
-        <textarea
-          value={noteContent}
-          onChange={e => setNoteContent(e.target.value)}
-          id='content'
-          name='content'
-          rows='5'
-          required
-        />
+        <textarea id='content' name='content' rows='5' required />
       </p>
 
       {/* show server-side validation errors */}
