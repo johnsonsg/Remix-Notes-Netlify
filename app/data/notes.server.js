@@ -1,5 +1,6 @@
 import { prisma } from './database.server'
 
+// Create / Add
 export async function addNote(noteData) {
   try {
     return await prisma.note.create({
@@ -11,5 +12,20 @@ export async function addNote(noteData) {
   } catch (error) {
     console.log(error)
     throw new Error('Failed to add note.')
+  }
+}
+
+// Fetch All
+export async function getStoredNotes() {
+  try {
+    const notes = await prisma.note.findMany({
+      orderBy: {
+        dateAdded: 'desc'
+      }
+    })
+    return notes
+  } catch (error) {
+    // console.log(error)
+    throw new Error('Failed to fetch notes.')
   }
 }
