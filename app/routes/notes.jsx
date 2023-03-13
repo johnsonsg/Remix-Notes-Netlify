@@ -1,35 +1,31 @@
-import { redirect } from '@remix-run/node'
+import { json, redirect } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
 import NewNote, { links as newNoteLinks } from '~/components/NewNote'
-// import { getStoredNotes, storeNotes } from '~/data/notes'
-import { addNote } from '~/data/notes.server'
+import NoteList, { links as noteListLinks } from '~/components/NoteList'
+import { addNote, getStoredNotes } from '~/data/notes.server'
 import { validateNoteInput } from '~/data/validation.server'
 
 export default function NotesPage() {
+  const notes = useLoaderData()
   return (
     <main>
       <NewNote />
+      <NoteList notes={notes} />
     </main>
   )
 }
 
+// Fetch notes data from the server
+export async function loader() {
+  const notes = await getStoredNotes()
+  // return notes
+  return json(notes, { headers: { 'cache-control': 'max-age=5' } })
+}
+
 export async function action({ request }) {
   const formData = await request.formData()
-  // const noteData = {
-  //   title: formData.get('title'),
-  //   content: formData.get('content'),
-  // }
-
-  // shortcut
   const noteData = Object.fromEntries(formData)
 
-  // getStoredNotes is Mock data
-  // const existingNotes = await getStoredNotes()
-  // noteData.id = new Date().toISOString()
-
-  // Mock Data
-  // const updatedNotes = existingNotes.concat(noteData)
-
-  // Validation...
   try {
     validateNoteInput(noteData)
   } catch (error) {
@@ -37,13 +33,9 @@ export async function action({ request }) {
   }
 
   await addNote(noteData)
-
-  // Mock Data
-  // await storeNotes(updatedNotes)
-
   return redirect('/notes')
 }
 
 export function links() {
-  return [...newNoteLinks()]
+  return [...newNoteLinks(), ...noteListLinks()]
 }
