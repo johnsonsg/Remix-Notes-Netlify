@@ -61,7 +61,7 @@ function NewNote() {
 
       <div className='form-actions'>
         <button disabled={isSubmitting}>
-          {isSubmitting ? 'Saving...' : 'Save Note'}
+          {isSubmitting ? 'Adding...' : 'Add Note'}
         </button>
       </div>
     </Form>
