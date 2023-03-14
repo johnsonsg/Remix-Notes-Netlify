@@ -3,6 +3,7 @@ import { Link, useLoaderData } from '@remix-run/react'
 import { getStoredNotes } from '~/data/notes.server'
 import styles from '~/styles/note-details.css'
 import { FaBackward } from 'react-icons/fa'
+import { json } from '@remix-run/node'
 
 export default function NoteDetailsPage() {
   const note = useLoaderData()
@@ -26,6 +27,11 @@ export async function loader({ params }) {
   const notes = await getStoredNotes()
   const noteId = params.noteId
   const selectedNote = notes.find(note => note.id === noteId)
+
+  if (!selectedNote) {
+    throw json({ message: 'Note not found' + noteId }, { status: 404 })
+  }
+
   return selectedNote
 }
 
