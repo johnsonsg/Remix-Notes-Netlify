@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +20,7 @@
   --color-primary-800: #001b29;
 
   --color-secondary-50: hsl(24, 93%, 83%);
-  --color-secondary-100: hsl(24, 91%, 75%);
+  --color-secondary-100: rgb(249, 180, 133);
   --color-secondary-200: hsl(24, 96%, 68%);
   --color-secondary-300: hsl(24, 96%, 61%);
   --color-secondary-400: hsl(24, 96%, 53%);
@@ -56,8 +58,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: radial-gradient(
     ellipse at top left,
-    var(--color-primary-100),
-    var(--color-primary-700)
+    var(--color-primary-800),
+    var(--color-primary-500)
   );
   min-height: 100vh;
 }
