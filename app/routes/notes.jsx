@@ -35,6 +35,7 @@ export async function action({ request }) {
   // if (noteData.title.trim().length > 5) {
   //   return { message: 'Invalid title - must be at least 5 characters long.' }
   // }
+
   // Use server-side validation instead with validation.server.js with try/catch
   try {
     validateNoteInput(noteData)
