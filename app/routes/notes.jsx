@@ -52,6 +52,13 @@ export function links() {
   return [...newNoteLinks(), ...noteListLinks()]
 }
 
+export function meta() {
+  return {
+    title: 'All Notes',
+    description: 'A list of all your notes'
+  }
+}
+
 export function CatchBoundary() {
   const caughtResponse = useCatch()
   const message = caughtResponse.data?.message || 'Data not found.'
