@@ -16,6 +16,7 @@ import styles from '~/styles/main.css'
 export const meta = () => ({
   charset: 'utf-8',
   title: 'New Remix App',
+  description: 'A new Remix app',
   viewport: 'width=device-width,initial-scale=1'
 })
 
