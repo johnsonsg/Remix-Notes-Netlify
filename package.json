@@ -17,7 +17,8 @@
     "isbot": "latest",
     "prisma": "^4.11.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.14.1",
