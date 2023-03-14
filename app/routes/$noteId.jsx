@@ -2,6 +2,7 @@ import { Link, useLoaderData } from '@remix-run/react'
 
 import { getStoredNotes } from '~/data/notes.server'
 import styles from '~/styles/note-details.css'
+import { FaBackward } from 'react-icons/fa'
 
 export default function NoteDetailsPage() {
   const note = useLoaderData()
@@ -10,7 +11,9 @@ export default function NoteDetailsPage() {
     <main id='note-details'>
       <header>
         <nav>
-          <Link to='/notes'>Back to all Notes</Link>
+          <Link to='/notes'>
+            <FaBackward /> Back to all Notes
+          </Link>
         </nav>
         <h1>{note.title}</h1>
       </header>
