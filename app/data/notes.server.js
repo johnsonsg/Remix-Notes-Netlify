@@ -29,3 +29,18 @@ export async function getStoredNotes() {
     throw new Error('Failed to fetch notes.')
   }
 }
+
+// get single note by ID
+// export async function getStoredNote(id) {
+//   try {
+//     const note = await prisma.note.findFirst({
+//       where: {
+//         id
+//       }
+//     })
+//     return note
+//   } catch (error) {
+//     // console.log(error)
+//     throw new Error('Failed to fetch note.')
+//   }
+// }
