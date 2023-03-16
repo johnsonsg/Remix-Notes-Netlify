@@ -23,7 +23,7 @@ function NewNote() {
   function submitHandler(event) {
     event.preventDefault()
     submit(event.target, {
-      method: 'POST'
+      method: 'post'
     })
   }
 

@@ -44,3 +44,17 @@ export async function getStoredNotes() {
 //     throw new Error('Failed to fetch note.')
 //   }
 // }
+
+// Delete Note
+export async function deleteNote(id) {
+  try {
+    await prisma.note.delete({
+      where: {
+        id
+      }
+    })
+  } catch (error) {
+    console.log(error)
+    throw new Error('Failed to delete note.')
+  }
+}
