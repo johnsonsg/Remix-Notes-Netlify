@@ -35,11 +35,6 @@ export async function action({ params, request }) {
     const formData = await request.formData()
     const noteData = Object.fromEntries(formData)
 
-    // if (noteData.title.trim().length > 5) {
-    //   return { message: 'Invalid title - must be at least 5 characters long.' }
-    // }
-
-    // Use server-side validation instead with validation.server.js with try/catch
     try {
       validateNoteInput(noteData)
     } catch (error) {
@@ -47,12 +42,10 @@ export async function action({ params, request }) {
     }
 
     await addNote(noteData)
-    // await new Promise(resolve => setTimeout(resolve, 500))
     return redirect('/notes')
   } else if (request.method === 'DELETE') {
     await deleteNote(noteId)
     console.log('DELETE', deleteNote)
-    // await new Promise(resolve => setTimeout(resolve, 500))
     return redirect('/notes')
   }
 }
