@@ -2,7 +2,7 @@ import { json, redirect } from '@remix-run/node'
 import { Link, useCatch, useLoaderData } from '@remix-run/react'
 import NewNote, { links as newNoteLinks } from '~/components/NewNote'
 import NoteList, { links as noteListLinks } from '~/components/NoteList'
-import { addNote, getStoredNotes } from '~/data/notes.server'
+import { addNote, getStoredNotes, deleteNote } from '~/data/notes.server'
 import { validateNoteInput } from '~/data/validation.server'
 
 export default function NotesPage() {
@@ -28,24 +28,33 @@ export async function loader() {
   return json(notes, { headers: { 'cache-control': 'max-age=5' } })
 }
 
-export async function action({ request }) {
-  const formData = await request.formData()
-  const noteData = Object.fromEntries(formData)
+export async function action({ params, request }) {
+  const noteId = params.id
 
-  // if (noteData.title.trim().length > 5) {
-  //   return { message: 'Invalid title - must be at least 5 characters long.' }
-  // }
+  if (request.method === 'POST') {
+    const formData = await request.formData()
+    const noteData = Object.fromEntries(formData)
 
-  // Use server-side validation instead with validation.server.js with try/catch
-  try {
-    validateNoteInput(noteData)
-  } catch (error) {
-    return error
+    // if (noteData.title.trim().length > 5) {
+    //   return { message: 'Invalid title - must be at least 5 characters long.' }
+    // }
+
+    // Use server-side validation instead with validation.server.js with try/catch
+    try {
+      validateNoteInput(noteData)
+    } catch (error) {
+      return error
+    }
+
+    await addNote(noteData)
+    // await new Promise(resolve => setTimeout(resolve, 500))
+    return redirect('/notes')
+  } else if (request.method === 'DELETE') {
+    await deleteNote(noteId)
+    console.log('DELETE', deleteNote)
+    // await new Promise(resolve => setTimeout(resolve, 500))
+    return redirect('/notes')
   }
-
-  await addNote(noteData)
-  await new Promise(resolve => setTimeout(resolve, 500))
-  return redirect('/notes')
 }
 
 export function links() {
