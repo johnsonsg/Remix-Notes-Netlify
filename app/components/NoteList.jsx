@@ -17,9 +17,9 @@ function NoteList({ notes }) {
                       {new Date(note.dateAdded).toLocaleDateString('en-US', {
                         day: 'numeric',
                         month: 'short',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
+                        year: 'numeric'
+                        // hour: '2-digit',
+                        // minute: '2-digit'
                       })}
                     </time>
                   </li>
