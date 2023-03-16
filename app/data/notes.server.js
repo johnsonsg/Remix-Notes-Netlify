@@ -30,20 +30,23 @@ export async function getStoredNotes() {
   }
 }
 
-// get single note by ID
-// export async function getStoredNote(id) {
-//   try {
-//     const note = await prisma.note.findFirst({
-//       where: {
-//         id
-//       }
-//     })
-//     return note
-//   } catch (error) {
-//     // console.log(error)
-//     throw new Error('Failed to fetch note.')
-//   }
-// }
+// Update Note
+export async function updateNote(id, noteData) {
+  try {
+    await prisma.note.update({
+      where: {
+        id
+      },
+      data: {
+        title: noteData.title,
+        content: noteData.content
+      }
+    })
+  } catch (error) {
+    console.log(error)
+    throw new Error('Failed to update note.')
+  }
+}
 
 // Delete Note
 export async function deleteNote(id) {
