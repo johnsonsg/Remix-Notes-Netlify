@@ -7,7 +7,7 @@ function NoteList({ notes, deleteBtn }) {
     <ul id='note-list'>
       {notes.map((note, index) => (
         <li key={note.id} className='note'>
-          <Link to={'/' + note.id}>
+          <Link to={note.id}>
             <article>
               <header>
                 <ul className='note-meta'>

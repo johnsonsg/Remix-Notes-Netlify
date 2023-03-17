@@ -31,22 +31,22 @@ export async function getStoredNotes() {
 }
 
 // Update Note
-export async function updateNote(id, noteData) {
-  try {
-    await prisma.note.update({
-      where: {
-        id
-      },
-      data: {
-        title: noteData.title,
-        content: noteData.content
-      }
-    })
-  } catch (error) {
-    console.log(error)
-    throw new Error('Failed to update note.')
-  }
-}
+// export async function updateNote(id, noteData) {
+//   try {
+//     await prisma.note.update({
+//       where: {
+//         id
+//       },
+//       data: {
+//         title: noteData.title,
+//         content: noteData.content
+//       }
+//     })
+//   } catch (error) {
+//     console.log(error)
+//     throw new Error('Failed to update note.')
+//   }
+// }
 
 // Delete Note
 export async function deleteNote(id) {
