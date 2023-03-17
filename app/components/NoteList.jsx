@@ -1,7 +1,7 @@
 import { Link } from '@remix-run/react'
 import styles from '~/styles/NoteList.css'
 
-function NoteList({ notes }) {
+function NoteList({ notes, deleteBtn }) {
   // ({ notes }) from notes.server.js
   return (
     <ul id='note-list'>
@@ -11,7 +11,7 @@ function NoteList({ notes }) {
             <article>
               <header>
                 <ul className='note-meta'>
-                  <li>#{index + 1}</li>
+                  {/* <li>#{index + 1}</li> */}
                   <li>
                     <time dateTime={note.dateAdded}>
                       {new Date(note.dateAdded).toLocaleDateString('en-US', {
@@ -23,6 +23,7 @@ function NoteList({ notes }) {
                       })}
                     </time>
                   </li>
+                  <li>{deleteBtn}</li>
                 </ul>
                 <h2>{note.title}</h2>
               </header>

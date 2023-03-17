@@ -1,16 +1,23 @@
 import { json, redirect } from '@remix-run/node'
-import { Link, useCatch, useLoaderData } from '@remix-run/react'
+import { Link, useCatch, useLoaderData, Form } from '@remix-run/react'
 import NewNote, { links as newNoteLinks } from '~/components/NewNote'
 import NoteList, { links as noteListLinks } from '~/components/NoteList'
 import { addNote, getStoredNotes, deleteNote } from '~/data/notes.server'
 import { validateNoteInput } from '~/data/validation.server'
 
-export default function NotesPage() {
+export default function NotesPage({ id }) {
   const notes = useLoaderData()
   return (
     <main>
       <NewNote />
-      <NoteList notes={notes} />
+      <NoteList
+        notes={notes}
+        deleteBtn={
+          <Form method='delete' action={id}>
+            <button>Delete</button>
+          </Form>
+        }
+      />
     </main>
   )
 }

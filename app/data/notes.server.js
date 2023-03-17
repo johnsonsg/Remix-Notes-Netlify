@@ -52,9 +52,7 @@ export async function updateNote(id, noteData) {
 export async function deleteNote(id) {
   try {
     await prisma.note.delete({
-      where: {
-        id
-      }
+      where: { id }
     })
   } catch (error) {
     console.log(error)
