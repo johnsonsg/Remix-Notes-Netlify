@@ -53,7 +53,9 @@ export async function deleteNote() {
   try {
     await prisma.note.delete({
       where: {
-        id: '64148c77955718e302756a0e'
+        // id: '64148c77955718e302756a0e'
+        // This works when I put in the actual ID of record from DB
+        id
       }
     })
   } catch (error) {
