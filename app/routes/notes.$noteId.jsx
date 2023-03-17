@@ -1,16 +1,38 @@
-import { Link, useLoaderData } from '@remix-run/react'
+import { Link, useLoaderData, useFetcher } from '@remix-run/react'
 
-import { getStoredNotes } from '~/data/notes.server'
+import { getStoredNotes, deleteNote } from '~/data/notes.server'
 import styles from '~/styles/note-details.css'
-import { json } from '@remix-run/node'
+import { json, redirect } from '@remix-run/node'
 import { FaBackward } from 'react-icons/fa'
 
-export default function NoteDetailsPage() {
+export default function NoteDetailsPage({ id }) {
   const note = useLoaderData()
+
+  // const fetcher = useFetcher()
+
+  // function deleteExpenseItemHandler() {
+  //   const proceed = confirm('Are you sure? Do you want to delete this item?')
+  //   if (!proceed) {
+  //     return
+  //   }
+  //   fetcher.submit(null, {
+  //     method: 'delete',
+  //     action: `/notes/${id}`
+  //   })
+  // }
+
+  // if (fetcher.state !== 'idle') {
+  //   return (
+  //     <article className='expense-item locked'>
+  //       <p>Deleting...</p>
+  //     </article>
+  //   )
+  // }
 
   return (
     <main id='note-details'>
       <header>
+        {/* <button onClick={deleteExpenseItemHandler}>Delete</button> */}
         <nav>
           <Link to='/notes'>
             <FaBackward />
@@ -34,6 +56,15 @@ export async function loader({ params }) {
   }
 
   return selectedNote
+}
+
+export async function action({ params, request }) {
+  const noteId = params.id
+  if (request.method === 'DELETE') {
+    await deleteNote(noteId)
+    console.log('DELETE', deleteNote)
+    return redirect('/notes')
+  }
 }
 
 export function links() {

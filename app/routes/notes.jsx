@@ -1,5 +1,5 @@
 import { json, redirect } from '@remix-run/node'
-import { Link, useCatch, useLoaderData, Form } from '@remix-run/react'
+import { Link, useCatch, useLoaderData } from '@remix-run/react'
 import NewNote, { links as newNoteLinks } from '~/components/NewNote'
 import NoteList, { links as noteListLinks } from '~/components/NoteList'
 import { addNote, getStoredNotes, deleteNote } from '~/data/notes.server'
@@ -7,17 +7,11 @@ import { validateNoteInput } from '~/data/validation.server'
 
 export default function NotesPage() {
   const notes = useLoaderData()
+
   return (
     <main>
       <NewNote />
-      <NoteList
-        notes={notes}
-        // deleteBtn={
-        //   <Form method='delete' action={id}>
-        //     <button>Delete</button>
-        //   </Form>
-        // }
-      />
+      <NoteList notes={notes} />
     </main>
   )
 }
@@ -36,7 +30,7 @@ export async function loader() {
 }
 
 export async function action({ params, request }) {
-  const noteId = params.id
+  // const noteId = params.id
 
   if (request.method === 'POST') {
     const formData = await request.formData()
@@ -50,11 +44,12 @@ export async function action({ params, request }) {
 
     await addNote(noteData)
     return redirect('/notes')
-  } else if (request.method === 'DELETE') {
-    await deleteNote(noteId)
-    console.log('DELETE', deleteNote)
-    return redirect('/notes')
   }
+  // else if (request.method === 'DELETE') {
+  //   await deleteNote(noteId)
+  //   console.log('DELETE', deleteNote)
+  //   return redirect('/notes')
+  // }
 }
 
 export function links() {

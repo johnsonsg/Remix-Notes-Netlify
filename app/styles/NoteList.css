@@ -26,6 +26,10 @@
   transform: translateY(-0.25rem);
 }
 
+.note.locked {
+  margin: 0px auto;
+}
+
 .note-meta {
   list-style: none;
   margin: 0;

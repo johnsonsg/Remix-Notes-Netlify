@@ -49,10 +49,12 @@ export async function getStoredNotes() {
 // }
 
 // Delete Note
-export async function deleteNote(id) {
+export async function deleteNote() {
   try {
     await prisma.note.delete({
-      where: { id }
+      where: {
+        id: '64148c77955718e302756a0e'
+      }
     })
   } catch (error) {
     console.log(error)
