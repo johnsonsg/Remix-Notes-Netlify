@@ -6,23 +6,21 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch
-} from '@remix-run/react'
+  useCatch,
+} from '@remix-run/react';
 
-import MainNavigation from '~/components/MainNavigation'
-
-import styles from '~/styles/main.css'
+import MainNavigation from '~/components/MainNavigation';
+import styles from '~/styles/main.css';
 
 export const meta = () => ({
   charset: 'utf-8',
   title: 'New Remix App',
-  description: 'A new Remix app',
-  viewport: 'width=device-width,initial-scale=1'
-})
+  viewport: 'width=device-width,initial-scale=1',
+});
 
 export default function App() {
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
         <Meta />
         <Links />
@@ -37,13 +35,13 @@ export default function App() {
         <LiveReload />
       </body>
     </html>
-  )
+  );
 }
 
 export function CatchBoundary() {
-  const caughtResponse = useCatch()
+  const caughtResponse = useCatch();
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
         <Meta />
         <Links />
@@ -53,11 +51,11 @@ export function CatchBoundary() {
         <header>
           <MainNavigation />
         </header>
-        <main className='error'>
+        <main className="error">
           <h1>{caughtResponse.statusText}</h1>
-          <p>{caughtResponse.data?.message || 'Something went wrong'}</p>
+          <p>{caughtResponse.data?.message || 'Something went wrong!'}</p>
           <p>
-            <Link to='/'>Back to safety</Link>
+            Back to <Link to="/">safety</Link>!
           </p>
         </main>
         <ScrollRestoration />
@@ -65,26 +63,26 @@ export function CatchBoundary() {
         <LiveReload />
       </body>
     </html>
-  )
+  );
 }
 
 export function ErrorBoundary({ error }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
         <Meta />
         <Links />
-        <title>An Error Occured!</title>
+        <title>An error occurred!</title>
       </head>
       <body>
         <header>
           <MainNavigation />
         </header>
-        <main className='error'>
-          <h1>Something went wrong</h1>
+        <main className="error">
+          <h1>An error occurred!</h1>
           <p>{error.message}</p>
           <p>
-            <Link to='/'>Back to safety</Link>
+            Back to <Link to="/">safety</Link>!
           </p>
         </main>
         <ScrollRestoration />
@@ -92,9 +90,9 @@ export function ErrorBoundary({ error }) {
         <LiveReload />
       </body>
     </html>
-  )
+  );
 }
 
 export function links() {
-  return [{ rel: 'stylesheet', href: styles }]
+  return [{ rel: 'stylesheet', href: styles }];
 }

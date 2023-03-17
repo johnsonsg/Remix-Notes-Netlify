@@ -5,18 +5,18 @@ import NoteList, { links as noteListLinks } from '~/components/NoteList'
 import { addNote, getStoredNotes, deleteNote } from '~/data/notes.server'
 import { validateNoteInput } from '~/data/validation.server'
 
-export default function NotesPage({ id }) {
+export default function NotesPage() {
   const notes = useLoaderData()
   return (
     <main>
       <NewNote />
       <NoteList
         notes={notes}
-        deleteBtn={
-          <Form method='delete' action={id}>
-            <button>Delete</button>
-          </Form>
-        }
+        // deleteBtn={
+        //   <Form method='delete' action={id}>
+        //     <button>Delete</button>
+        //   </Form>
+        // }
       />
     </main>
   )
