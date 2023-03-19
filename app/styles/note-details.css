@@ -48,17 +48,19 @@
 
 .note-actions button,
 .note-actions a {
-  background-color: transparent;
+  background-color: var(--color-primary-100);
   border: none;
   color: var(--color-white);
-  padding: 0;
+
   font-weight: 500;
   font-size: 1.15rem;
+  padding: 0.5rem 2rem;
+  border-radius: 30px;
 }
 
 .note-actions button:hover,
 .note-actions a:hover {
-  color: var(--color-secondary-50);
+  background-color: var(--color-primary-400);
 }
 
 .note-actions svg:hover {
