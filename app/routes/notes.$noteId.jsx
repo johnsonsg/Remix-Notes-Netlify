@@ -59,10 +59,10 @@ export async function loader({ params }) {
 }
 
 export async function action({ params, request }) {
-  const noteId = params.id
+  const noteId = params.noteId
   if (request.method === 'DELETE') {
+    // console.log('DELETE', noteId)
     await deleteNote(noteId)
-    console.log('DELETE', deleteNote)
     return redirect('/notes')
   }
 }

@@ -1,12 +1,12 @@
 import { Link, useFetcher } from '@remix-run/react'
 import styles from '~/styles/NoteList.css'
 
-function NoteList({ notes, id }) {
-  // ({ notes }) from notes.server.js
-
+function NoteList({ notes }) {
+  // ({ notes }) from notes.server.js to map through list of notes
   const fetcher = useFetcher()
 
-  function deleteExpenseItemHandler() {
+  // receive 'id' as function argument
+  function deleteExpenseItemHandler(id) {
     const proceed = confirm('Are you sure? Do you want to delete this item?')
     if (!proceed) {
       return
@@ -27,15 +27,28 @@ function NoteList({ notes, id }) {
 
   return (
     <ul id='note-list'>
-      {notes.map((note, index) => (
+      {notes.map(note => (
         <li key={note.id} className='note'>
           {/* <Link to={note.id}> */}
           <article>
             <header>
               <ul className='note-meta'>
-                {/* <li>#{index + 1}</li> */}
                 <li>
-                  <button onClick={deleteExpenseItemHandler}>Delete</button>
+                  {/* crete button to delete note using deleteExpenseItemHandler function */}
+                  {/* Bind argument to 'deleteExpenseItemHandler' */}
+                  {/* using the correct 'id' of the note */}
+
+                  <button
+                    onClick={deleteExpenseItemHandler.bind(null, note.id)}
+                  >
+                    Delete
+                  </button>
+
+                  {/* <button onClick={() => deleteExpenseItemHandler(note.id)}>
+                    Delete
+                  </button> */}
+
+                  <Link to={note.id}>View Details</Link>
                 </li>
                 <li>
                   <time dateTime={note.dateAdded}>

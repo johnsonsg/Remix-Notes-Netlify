@@ -49,17 +49,15 @@ export async function getStoredNotes() {
 // }
 
 // Delete Note
-export async function deleteNote() {
+export async function deleteNote(id) {
   try {
     await prisma.note.delete({
       where: {
-        // id: '64148c77955718e302756a0e'
-        // This works when I put in the actual ID of record from DB
         id
       }
     })
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     throw new Error('Failed to delete note.')
   }
 }
