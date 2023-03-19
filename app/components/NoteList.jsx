@@ -27,46 +27,47 @@ function NoteList({ notes }) {
 
   return (
     <ul id='note-list'>
-      {notes.map(note => (
+      {notes.map((note, index) => (
         <li key={note.id} className='note'>
-          {/* <Link to={note.id}> */}
-          <article>
-            <header>
-              <ul className='note-meta'>
-                <li>
+          <Link to={note.id}>
+            <article>
+              <header>
+                <ul className='note-meta'>
+                  <li>#{index + 1}</li>
+                  <li>
+                    <time dateTime={note.dateAdded}>
+                      {new Date(note.dateAdded).toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                        // hour: '2-digit',
+                        // minute: '2-digit'
+                      })}
+                    </time>
+                  </li>
+                  {/* <li> */}
+                  {/* <menu className='note-actions'> */}
                   {/* crete button to delete note using deleteExpenseItemHandler function */}
                   {/* Bind argument to 'deleteExpenseItemHandler' */}
                   {/* using the correct 'id' of the note */}
 
-                  <button
+                  {/* <button
                     onClick={deleteExpenseItemHandler.bind(null, note.id)}
                   >
                     Delete
-                  </button>
-
-                  {/* <button onClick={() => deleteExpenseItemHandler(note.id)}>
-                    Delete
                   </button> */}
-
-                  <Link to={note.id}>View Details</Link>
-                </li>
-                <li>
-                  <time dateTime={note.dateAdded}>
-                    {new Date(note.dateAdded).toLocaleDateString('en-US', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric'
-                      // hour: '2-digit',
-                      // minute: '2-digit'
-                    })}
-                  </time>
-                </li>
-              </ul>
-              <h2>{note.title}</h2>
-            </header>
-            <p>{note.content}</p>
-          </article>
-          {/* </Link> */}
+                  {/* <Link to={note.id}>View Note</Link>
+                    <button onClick={() => deleteExpenseItemHandler(note.id)}>
+                      Delete
+                    </button> */}
+                  {/* </menu> */}
+                  {/* </li> */}
+                </ul>
+                <h2>{note.title}</h2>
+              </header>
+              <p>{note.content}</p>
+            </article>
+          </Link>
         </li>
       ))}
     </ul>

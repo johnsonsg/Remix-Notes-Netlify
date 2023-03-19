@@ -37,3 +37,30 @@
   font-size: 1.15rem;
   white-space: pre-wrap;
 }
+
+.note-actions {
+  margin: 1rem 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-actions button,
+.note-actions a {
+  background-color: transparent;
+  border: none;
+  color: var(--color-white);
+  padding: 0;
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+
+.note-actions button:hover,
+.note-actions a:hover {
+  color: var(--color-secondary-50);
+}
+
+.note-actions svg:hover {
+  cursor: pointer;
+}

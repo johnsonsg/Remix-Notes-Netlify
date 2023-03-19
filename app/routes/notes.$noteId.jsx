@@ -5,39 +5,44 @@ import styles from '~/styles/note-details.css'
 import { json, redirect } from '@remix-run/node'
 import { FaBackward } from 'react-icons/fa'
 
-export default function NoteDetailsPage({ id }) {
+export default function NoteDetailsPage() {
   const note = useLoaderData()
 
-  // const fetcher = useFetcher()
+  const fetcher = useFetcher()
 
-  // function deleteExpenseItemHandler() {
-  //   const proceed = confirm('Are you sure? Do you want to delete this item?')
-  //   if (!proceed) {
-  //     return
-  //   }
-  //   fetcher.submit(null, {
-  //     method: 'delete',
-  //     action: `/notes/${id}`
-  //   })
-  // }
+  // receive 'id' as function argument
+  function deleteExpenseItemHandler(id) {
+    const proceed = confirm('Are you sure? Do you want to delete this item?')
+    if (!proceed) {
+      return
+    }
+    fetcher.submit(null, {
+      method: 'delete',
+      action: `/notes/${id}`
+    })
+  }
 
-  // if (fetcher.state !== 'idle') {
-  //   return (
-  //     <article className='expense-item locked'>
-  //       <p>Deleting...</p>
-  //     </article>
-  //   )
-  // }
+  if (fetcher.state !== 'idle') {
+    return (
+      <article className='note locked'>
+        <p>Deleting...</p>
+      </article>
+    )
+  }
 
   return (
     <main id='note-details'>
       <header>
-        {/* <button onClick={deleteExpenseItemHandler}>Delete</button> */}
         <nav>
           <Link to='/notes'>
             <FaBackward />
             Back to all Notes
           </Link>
+          <menu className='note-actions'>
+            <button onClick={() => deleteExpenseItemHandler(note.id)}>
+              Delete Note
+            </button>
+          </menu>
         </nav>
         <h1>{note.title}</h1>
       </header>
